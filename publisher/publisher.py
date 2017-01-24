@@ -16,7 +16,9 @@ from random import randint
 
 class Publisher(object):
     def __init__(self):
-        self.client = Client('http://primalinvestor.com/xmlrpc.php', 'primalinvestor_qay5ou', 'Iwhualphaalpha!1984')
+        with open('/home/ubuntu/pass/prod_pass.json', 'r') as f:
+            cred = json.load(f)
+        self.client = Client(cred['url'], cred['user'], cred['password'])
 
         
     def post(self, article, dry_run):
